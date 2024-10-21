@@ -1,0 +1,27 @@
+def calculate_change(n, x):
+    coins = [500, 100, 50, 10]
+    change = n - x  # おつりを計算
+    result = {}
+
+    if change < 0:
+        print("投入金額が不足しています。")
+        return
+
+    print(f"おつり: {change}円")
+
+    
+    for coin in coins:
+        if change >= coin:
+            count = change // coin  # 枚数を計算
+            change %= coin  # 残りのおつりを更新
+            result[coin] = count
+
+    
+    for coin, count in result.items():
+        print(f"{coin}円: {count}枚")
+
+
+if __name__ == "__main__":
+    n = int(input("投入金額を入力してください: "))
+    x = int(input("商品の金額を入力してください: "))
+    calculate_change(n, x)
